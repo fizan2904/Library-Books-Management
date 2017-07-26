@@ -1,0 +1,13 @@
+<h2 class="page-header">Cart</h2>
+<h4>Books in the cart are the following</h2>
+<table class="table table-inverse">
+	<tbody>
+		{{#each docs}}
+		<tr>
+			<td><a href="/dashboard/listbooks/{{this._id}}"><h4>{{this.bookname}}</h4></a></td>
+			<td><a href="/dashboard/listbooksbyauthor/{{this._id}}"><h4>{{this.price}}</h4></a></td>
+		</tr>
+		{{/each}}
+	</tbody>
+<table>
+<a href="/checkout"><button class="btn btn-default">Checkout</button></a>

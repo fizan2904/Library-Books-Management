@@ -1,0 +1,19 @@
+<h2 class="page-header">Books List</h2>
+<table class="table table-inverse">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Genre</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each docs}}
+		<tr>
+			<td><a href="/books/listbooks/{{this._id}}"><h4>{{this.title}}</h4></a></td>
+			<td><a href="/books/listbooksbyauthor/{{this.author}}"><h4>{{this.author}}</h4></a></td>
+			<td><a href="/books/listbooksbygenre/{{this.genre}}"><h4>{{this.genre}}</h4></a></td>
+		</tr>
+		{{/each}}
+	</tbody>
+<table>

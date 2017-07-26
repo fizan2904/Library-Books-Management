@@ -1,0 +1,10 @@
+<h2>Authors List</h2>
+<table class="table table-inverse">
+	<tbody>
+		{{#each docs}}
+		<tr>
+			<td><a href="../books/listbooksbyauthor/{{this.author}}">{{this.author}}</td></a>
+		</tr>
+		{{/each}}
+	</tbody>
+<table>

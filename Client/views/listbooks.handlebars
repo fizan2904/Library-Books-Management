@@ -1,0 +1,62 @@
+<h2 class="page-header">Books List</h2>
+<h4>Search</h4>
+<input type="search" class="light-table-filter form-control" data-table="order-table" placeholder="Search for Author or Genre or Title">
+<table class="order-table table">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Genre</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each docs}}
+		<tr>
+			<td><a href="/dashboard/listbooks/{{this._id}}"><h4>{{this.title}}</h4></a></td>
+			<td><a href="/dashboard/listbooksbyauthor/{{this.author}}"><h4>{{this.author}}</h4></a></td>
+			<td><a href="/dashboard/listbooksbygenre/{{this.genre}}"><h4>{{this.genre}}</h4></a></td>
+		</tr>
+		{{/each}}
+	</tbody>
+<table>
+<script>
+(function(document) {
+	'use strict';
+
+	var LightTableFilter = (function(Arr) {
+
+		var _input;
+
+		function _onInputEvent(e) {
+			_input = e.target;
+			var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+			Arr.forEach.call(tables, function(table) {
+				Arr.forEach.call(table.tBodies, function(tbody) {
+					Arr.forEach.call(tbody.rows, _filter);
+				});
+			});
+		}
+
+		function _filter(row) {
+			var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+		}
+
+		return {
+			init: function() {
+				var inputs = document.getElementsByClassName('light-table-filter');
+				Arr.forEach.call(inputs, function(input) {
+					input.oninput = _onInputEvent;
+				});
+			}
+		};
+	})(Array.prototype);
+
+	document.addEventListener('readystatechange', function() {
+		if (document.readyState === 'complete') {
+			LightTableFilter.init();
+		}
+	});
+
+})(document);
+</script>

@@ -1,0 +1,14 @@
+<h2 class="page-header">Upload Author</h2>
+{{#if errors}}
+	{{#each errors}}
+		<div class="notice error"><i class="icon-remove-sign icon-large"></i>{{msg}}
+		<a href="#close" class="icon-remove"></a></div>
+	{{/each}}
+{{/if}}
+<form method="post" action="/authors/uploadauthor">
+	<div class="form-group">
+		<label>Author Name</label>
+		<input type="text" class="form-control" placeholder="Author Name" name="author">
+	</div>
+	<button type="submit" class="btn btn-default">Upload</button>
+</form>
